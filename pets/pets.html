@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Мой питомец</title>
+    <link rel="icon" href="Assets/images/icon_violet_cat.svg"
+        type="png/svg">
+    <style>
+        input:required:valid {
+            border-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="background-image: url(Assets/images/background.jpg);">
+    <div class="container">
+    <h1 style="background-color: #f7a603; color: #000;">Мой любимый питомец</h1>
+    <form class="form" novalidate>
+    <object type="image/png" data="Assets/images/black_cat.png" style="width:150px;">Ваш браузер не поддерживает такое подключение картинок
+    </object>
+    <div><label><b>Кличка*</b></label>
+        <span><input type="text" id="animal" required placeholder="Кличка"/></span></div>
+
+    <div><br><label for="breed"><b>Порода</b></label>
+        <select id="breed">
+            <option value="1">Персидская кошка</option>
+            <option value="2">Сибирская кошка</option>
+            <option value="3">Экзотическая кошка</option>
+            <option value="4">Мейн-кун</option>
+            <option value="5">Рэгдолл</option>
+            <option value="6">Британская короткошёрстная кошка</option>
+            <option value="7">Американская короткошёрстная кошка</option>
+            <option value="8">Шотландская вислоухая</option>
+            <option value="9">Абиссинская кошка</option>
+            <option value="10">Канадский сфинкс</option>
+            <option value="11">Ориентальная кошка</option>
+            <option value="12">Сиамская кошка</option>
+            <option value="13">Другая</option></select></div>
+
+    <div><br><b>Пол</b>
+        <span><input type="radio" name="sex" id="female"/>
+                <label for="female">Самка</label>
+            <input type="radio" name="sex" id="male"/>
+                <label for="male">Самец</label></span>
+    </div>
+
+    <div class="container"><br>
+    <fieldset style="background-color: #f7a60388;">
+        <legend><b>Чем питается Ваш питомец?</b></legend>
+        <input type="checkbox" name="space" value="1" id="food1" /> <label for="food1">Сухой корм</label><br />
+        <input type="checkbox" name="space" value="2" id="food2" /> <label for="food2">Влажный корм</label><br />
+        <input type="checkbox" name="space" value="3" id="food3" /> <label for="food3">Натуральный корм</label><br/>
+    </fieldset></div>
+
+    <div class="container">
+    <br>
+    <fieldset style="background-color: #f7a60388;">
+        <legend><b>Информация о владельце</b></legend>
+        <div><input type="text" id="name" placeholder="Имя" required/>*</div>
+        <div><input type="tel" id="tel" placeholder="+_(___)-___-__-__" required minlength="10" maxlength="20" pattern="([\+]*[7-8]{1}\s?[\(]*9[0-9]{2}[\)]*\s?\d{3}[-]*\d{2}[-]*\d{2})"/>*</div>
+        <div><input type="email" id="email" placeholder="Электронный адрес" required/>*</div>
+    </fieldset></div>
+
+    <div class="container">
+    <br>
+    <div><textarea rows="10" cols="40" id="description" placeholder="Комментарий владельца" style="background-color: #f7a60388;"></textarea></div>
+    <div><br><label for="foto"><b>Фото питомца</b></label>
+        <input type="file" id="foto" /></div></div>
+
+        <div class="container"><br>
+    <fieldset style="background-color: #f7a60388;">
+        <legend><b>Пароль</b></legend>
+        <div><input type="password" id="password" placeholder="Введите пароль" required/>*</div>
+        <div><input type="password" id="pass" placeholder="Повторите пароль" required/>*</div>
+    </fieldset>
+
+    <div><br><button type="button">Сохранить</button></div></div>
+</form>
+
+    <div class="container"><br>
+        <img src="Assets/images/cats.gif" alt="cats">
+    <div>Хотите получать полезные советы по содержанию питомца?
+        <div><input type="checkbox" id="sogl" /><label for="sogl">Да, я даю согласие на
+            <a href="https://prominado.ru/blog/agreements/">обработку персональных данных</a></label></div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
