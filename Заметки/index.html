@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои заметки</title>
+    <style>
+        #error {
+            color: red;
+        }
+        #notes {
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h2>Мои заметки</h2>
+    <form novalidate>
+        <div>
+            <label for="note">Заметка*</label>
+        </div>
+        <div>
+            <textarea type="text" id="note" name="note" class=inputs value="" placeholder="Введите текст" required></textarea>
+            <div id="error"></div>
+        </div>
+    </form> 
+        <div><button id="button" onclick="send()";>Сохранить</button></div>
+        <div><h4>Все заметки</h4>
+        <div id="notes"></div>
+    <script src="./index.js"></script>
+</body>
+</html>
