@@ -32,10 +32,10 @@ document.addEventListener("DOMContentLoaded", function (event) {
     }
 });
 
-let sendMessage = (author, comment, img) => {
+let sendMessage = (author, now, comment, img) => {
     comment = checkSpam (comment);
     author = checkSpam (author);
-    document.getElementById("comments").innerHTML += `<span class="author">${author}: </span><span>${comment}</span><br>`;
+    document.getElementById("comments").innerHTML += `<span class="author">${author} (${now}): </span><span>${comment}</span><br>`;
     document.getElementById("comments").appendChild(img);
     document.getElementById("comments").innerHTML += `<br>`;
     document.getElementById("comment").value = "";
@@ -45,6 +45,15 @@ let send = () => {
     let author = document.getElementById("author").value;
     let comment = document.getElementById("comment").value;
     let comments = document.getElementById("comments");
+    let options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timezone: 'UTC',
+    };
+    let now = new Date().toLocaleString("ru", options);
     let img = new Image();
     img.src = "cat_big_eyes.gif";
 
@@ -63,10 +72,8 @@ let send = () => {
         localStorage.setItem("photo", img.src);
     }
 
-    sendMessage(author, comment, img);
+    sendMessage(author, now, comment, img);
 
-    if (localStorage.getItem("allComments") == null) {
-        localStorage.setItem("allComments", comments.innerHTML);
-    }
+    localStorage.setItem("allComments", comments.innerHTML);
 }
 
