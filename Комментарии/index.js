@@ -1,3 +1,9 @@
+let errors = [];
+let checkValidity = (input) => {
+    let validity = input.validity;
+    if (validity.valueMissing) {errors.push("Вы не ввели текст");}
+}
+
 let checkSpam = (str) => {
     if (!str) return str;
     str = str.replace(/viagra/i, "***");
@@ -8,13 +14,21 @@ let checkSpam = (str) => {
 document.addEventListener("DOMContentLoaded", function (event) {
     let name = localStorage.getItem("name");
     let photo = localStorage.getItem("photo");
+    let allComments = localStorage.getItem("allComments");
+
     if (name != null) {
         document.getElementById("author").value = name;
     }
+
     if (photo != null) {
         let img = new Image();
         img.src = photo;
         document.getElementById("photo").appendChild(img);
+    }
+
+    if (allComments != null) {
+        console.log({allComments});
+        document.getElementById("comments").innerHTML = allComments;
     }
 });
 
@@ -30,8 +44,16 @@ let sendMessage = (author, comment, img) => {
 let send = () => {
     let author = document.getElementById("author").value;
     let comment = document.getElementById("comment").value;
+    let comments = document.getElementById("comments");
     let img = new Image();
     img.src = "cat_big_eyes.gif";
+
+    errors = [];
+    let inputs = document.querySelectorAll("input");
+    for (let input of inputs) {
+        checkValidity(input);
+    }
+    document.getElementById("error").innerHTML = errors.join("<br>");
 
     if (localStorage.getItem("name") == null) {
         localStorage.setItem("name", author);
@@ -42,5 +64,9 @@ let send = () => {
     }
 
     sendMessage(author, comment, img);
+
+    if (localStorage.getItem("allComments") == null) {
+        localStorage.setItem("allComments", comments.innerHTML);
+    }
 }
 
