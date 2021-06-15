@@ -5,31 +5,42 @@ let checkValidity = (textarea) => {
 }
 
 document.addEventListener("DOMContentLoaded", function (event) {
-    let text = localStorage.getItem("text");
-    if (text != null) {
-        document.getElementById("note").value = text;
+    let allNotes = localStorage.getItem("allNotes");
+
+    if (allNotes != null) {
+        console.log({allNotes});
+        document.getElementById("notes").innerHTML = allNotes;
     }
 });
 
-let sendMessage = (note) => {
-    document.getElementById("notes").innerHTML += `${note}<br>`; 
+let sendMessage = (now, note) => {
+    document.getElementById("notes").innerHTML += `(${now})<br>${note}<br>`; 
     document.getElementById("note").value = "";
 } 
 
 let send = () => {
     errors = [];
+    let options = {
+        year: 'numeric',
+        month: 'numeric',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        timezone: 'UTC',
+    };
+    let now = new Date().toLocaleString("ru", options);
     let textareas = document.querySelectorAll("textarea");
+    let note = document.getElementById ("note").value;
+    let notes = document.getElementById("notes");
     for (let textarea of textareas) {
         checkValidity(textarea);
     }
     document.getElementById("error").innerHTML = errors.join("<br>");
 
-    const note = document.getElementById ("note").value;
-    if (localStorage.getItem("text") == null) {
-        localStorage.setItem("text", note);
+    if (note != "") {
+        sendMessage(now, note);
+        localStorage.setItem("allNotes", notes.innerHTML);
     }
-
-    sendMessage(note);
 }
 
 
